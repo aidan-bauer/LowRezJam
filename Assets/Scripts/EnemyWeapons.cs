@@ -12,13 +12,19 @@ public class EnemyWeapons : MonoBehaviour
 
     public bool canAttack;
 
-    public bool canFire = true;
+    public bool canFire = true; //set this to false with melee enemies
     public float fireRateTimer = 0;
 
     public int meleeAttackDamage = 10;
     public float meleeAttackTime = 3f;
 
     [HideInInspector] public EnemyMovement movement;
+    EnemyHealth health;
+
+    private void Awake()
+    {
+        health = GetComponent<EnemyHealth>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +35,7 @@ public class EnemyWeapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseManager.IsPaused)
+        if (!PauseManager.IsPaused && !health.isDead)
         {
             if (canAttack)
             {
@@ -37,7 +43,6 @@ public class EnemyWeapons : MonoBehaviour
                 {
                     if (canFire)
                     {
-                        Debug.Log("automatic fire");
                         Fire();
                         canFire = false;
                     }

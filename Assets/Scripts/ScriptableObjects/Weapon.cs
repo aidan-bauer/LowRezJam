@@ -21,13 +21,7 @@ public class Weapon : ScriptableObject
     public float projectileSpeed = 10f;
 
     public GameObject viewModel;
-    public GameObject worldModel;
     public GameObject muzzleFlash;
     public AudioClip gunfire;
-
-    public void DropWeapon(Vector3 dropPoint)
-    {
-        Instantiate(worldModel, dropPoint, Quaternion.identity);
-    }
 
 }

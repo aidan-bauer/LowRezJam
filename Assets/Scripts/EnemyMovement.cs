@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     NavMeshAgent agent;
     EnemyHealth health;
     EnemyWeapons weapons;
+    Animator anim;
 
 
     private void Awake()
@@ -19,16 +20,17 @@ public class EnemyMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
         weapons = GetComponent<EnemyWeapons>();
+        anim = GetComponentInChildren<Animator>();
         weapons.movement = this;
     }
 
-    /*private void OnEnable()
+    private void OnEnable()
     {
-        if (target)
+        if (target == null)
         {
-            agent.SetDestination(target.position);
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,14 +45,19 @@ public class EnemyMovement : MonoBehaviour
             if (agent.remainingDistance > stopDistance)
             {
                 agent.isStopped = false;
+                anim.SetBool("inRange", false);
             }
             
             if (agent.remainingDistance <= stopDistance)
             {
                 agent.isStopped = true;
                 weapons.canAttack = true;
+                anim.SetBool("inRange", true);
+
+                if (weapons.attackType == EnemyWeapons.AttackType.Ranged)
+                    transform.LookAt(target);
             }
-        } else //if (PauseManager.IsPaused || health.isDead)
+        } else
         {
             agent.isStopped = true;
         }

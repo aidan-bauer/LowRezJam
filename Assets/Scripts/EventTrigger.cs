@@ -6,7 +6,10 @@ using UnityEngine.Events;
 public class EventTrigger : MonoBehaviour
 {
 
+    public bool triggerOnce;
     public UnityEvent eventsToTrigger;
+
+    bool triggered;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +17,11 @@ public class EventTrigger : MonoBehaviour
         {
             if (other.GetComponent<PlayerHealth>())
             {
-                eventsToTrigger.Invoke();
+                if (!triggered)
+                    eventsToTrigger.Invoke();
+
+                if (triggerOnce)
+                    triggered = true;
             }
         }
     }

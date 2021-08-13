@@ -5,7 +5,7 @@ public class PlayerHealth : Health
 {
 
     public int maxArmor = 100;
-    int armor = 0;
+    public int armor = 0;
 
     [SerializeField] RectTransform healthBar, armorBar;
 
@@ -18,10 +18,13 @@ public class PlayerHealth : Health
 
     public override void Hurt(int damage)
     {
-        if (currHealth - damage > 0 && armor != 0)
-            currHealth -= damage;
-        else
-            currHealth = 0;
+        if (armor == 0)
+        {
+            if (currHealth - damage > 0)
+                currHealth -= damage;
+            else
+                currHealth = 0;
+        }
 
         if (armor - damage > 0)
             armor -= damage;
@@ -40,6 +43,8 @@ public class PlayerHealth : Health
             currHealth += healing;
         else
             currHealth = maxHealth;
+
+        UpdateUI(healthBar, (float)currHealth / maxHealth);
     }
 
     public void AddArmor(int armorPickup)
@@ -48,6 +53,8 @@ public class PlayerHealth : Health
             armor += armorPickup;
         else
             armor = maxArmor;
+
+        UpdateUI(armorBar, (float)armor / maxArmor);
     }
 
     void UpdateUI(RectTransform bar, float percentFill)

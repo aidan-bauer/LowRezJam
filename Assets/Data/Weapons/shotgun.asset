@@ -17,12 +17,11 @@ MonoBehaviour:
   damage: 30
   maxAmmo: 30
   maxAmmoReserve: 60
-  rpm: 45
+  rpm: 60
   projectileType: 0
-  shotRadius: 1.5
+  shotRadius: 2
   projectile: {fileID: 0}
   projectileSpeed: 10
-  viewModel: {fileID: 0}
-  worldModel: {fileID: 0}
+  viewModel: {fileID: 7622086925947444228, guid: 6b48c2aee33e67c4e9143bb1888f3fa1, type: 3}
   muzzleFlash: {fileID: 0}
   gunfire: {fileID: 0}

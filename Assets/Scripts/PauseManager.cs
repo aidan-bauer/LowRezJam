@@ -54,4 +54,10 @@ public class PauseManager : MonoBehaviour
         SetTimeScale(isPaused);
         SetPauseUI(isPaused);
     }
+
+    public void EndofLevel()
+    {
+        isPaused = true;
+        SetTimeScale(isPaused);
+    }
 }

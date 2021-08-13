@@ -22,7 +22,6 @@ public class WeaponInspector : Editor
     SerializedProperty projectileSpeed;
 
     SerializedProperty viewModel;
-    SerializedProperty worldModel;
     SerializedProperty muzzleFlash;
     SerializedProperty gunfire;
 
@@ -41,7 +40,6 @@ public class WeaponInspector : Editor
         projectile = serializedObject.FindProperty("projectile");
         projectileSpeed = serializedObject.FindProperty("projectileSpeed");
         viewModel = serializedObject.FindProperty("viewModel");
-        worldModel = serializedObject.FindProperty("worldModel");
         muzzleFlash = serializedObject.FindProperty("muzzleFlash");
         gunfire = serializedObject.FindProperty("gunfire");
     }
@@ -67,7 +65,6 @@ public class WeaponInspector : Editor
         
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(viewModel, new GUIContent("Viewmodel"));
-        EditorGUILayout.PropertyField(worldModel, new GUIContent("Worldmodel"));
         EditorGUILayout.PropertyField(muzzleFlash, new GUIContent("Muzzle Flash"));
         EditorGUILayout.PropertyField(gunfire, new GUIContent("Gunfire FX"));
 

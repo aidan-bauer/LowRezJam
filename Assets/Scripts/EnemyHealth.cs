@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyHealth : Health
 {
 
+    public AudioClip deathSound;
+
     public override void Hurt(int damage)
     {
         if (currHealth - damage > 0)
@@ -24,5 +26,15 @@ public class EnemyHealth : Health
             currHealth += healing;
         else
             currHealth = maxHealth;
+    }
+
+    public void DeathStuff()
+    {
+        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+
+        foreach (Collider col in colliders)
+        {
+            col.enabled = false;
+        }
     }
 }

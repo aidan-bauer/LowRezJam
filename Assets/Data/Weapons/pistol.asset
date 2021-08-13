@@ -22,7 +22,6 @@ MonoBehaviour:
   shotRadius: 0.25
   projectile: {fileID: 0}
   projectileSpeed: 10
-  viewModel: {fileID: 0}
-  worldModel: {fileID: 0}
+  viewModel: {fileID: 6608451270575711036, guid: 3bd2c43e399ffee449f46e92b974ceec, type: 3}
   muzzleFlash: {fileID: 0}
   gunfire: {fileID: 0}

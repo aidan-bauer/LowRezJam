@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,10 +11,14 @@ public class PlayerMovement : MonoBehaviour
     float rot = 0;
 
     Rigidbody rigid;
+    Animator anim;
+    PlayerHealth health;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        health = GetComponent<PlayerHealth>();
     }
 
     // Start is called before the first frame update
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseManager.IsPaused)
+        if (!PauseManager.IsPaused && !health.isDead)
         {
             //rotate camera
             rot += Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -57,6 +59,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 yDir = 0;
             }
+
+            /*if (xDir != 0 || yDir != 0)
+            {
+                anim.SetBool("walking", true);
+            } else
+            {
+                anim.SetBool("walking", false);
+            }*/
 
             rigid.velocity = Vector3.ClampMagnitude(transform.right * xDir + transform.forward * yDir, 1f) * moveSensitivity;
         }

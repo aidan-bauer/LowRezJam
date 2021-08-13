@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330fb95fffb44964680a4ddced3bdc98, type: 3}
   m_Name: rifle
   m_EditorClassIdentifier: 
-  weaponName: new weapon
+  weaponName: rifle
   weaponType: 1
-  damage: 10
+  damage: 5
   maxAmmo: 90
   maxAmmoReserve: 150
   rpm: 600
   projectileType: 0
-  shotRadius: 0.25
+  shotRadius: 0.1
   projectile: {fileID: 0}
   projectileSpeed: 10
-  viewModel: {fileID: 0}
-  worldModel: {fileID: 0}
+  viewModel: {fileID: 2068675161299111414, guid: e1202681d0bfcc64f93e6aee5ae68471, type: 3}
   muzzleFlash: {fileID: 0}
   gunfire: {fileID: 0}
