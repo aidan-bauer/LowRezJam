@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: stopDistance
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1633850274688831061, guid: f51243799701a89459b6eb276bb9b67e, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 22422a946d09cb64c89fc3e890b2fa3b, type: 2}
     - target: {fileID: 1633850274688831063, guid: f51243799701a89459b6eb276bb9b67e, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -70,6 +74,10 @@ PrefabInstance:
     - target: {fileID: 1633850274688831065, guid: f51243799701a89459b6eb276bb9b67e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633850274688831066, guid: f51243799701a89459b6eb276bb9b67e, type: 3}
+      propertyPath: m_Speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1633850274688831070, guid: f51243799701a89459b6eb276bb9b67e, type: 3}
       propertyPath: m_Name

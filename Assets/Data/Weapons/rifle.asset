@@ -21,7 +21,8 @@ MonoBehaviour:
   projectileType: 0
   shotRadius: 0.1
   projectile: {fileID: 0}
+  muzzlePos: {x: 0, y: 0, z: 0}
   projectileSpeed: 10
   viewModel: {fileID: 2068675161299111414, guid: e1202681d0bfcc64f93e6aee5ae68471, type: 3}
   muzzleFlash: {fileID: 0}
-  gunfire: {fileID: 0}
+  gunfire: {fileID: 8300000, guid: 854d3280d9ac8294190ffd39c33f1a16, type: 3}

@@ -18,10 +18,11 @@ MonoBehaviour:
   maxAmmo: 10
   maxAmmoReserve: 100
   rpm: 15
-  projectileType: 0
+  projectileType: 1
   shotRadius: 0.1
-  projectile: {fileID: 0}
-  projectileSpeed: 10
+  projectile: {fileID: 5674152124894924296, guid: 6d634f8083476ef4f91fe254d2b46fab, type: 3}
+  muzzlePos: {x: 0, y: 1.5, z: 0}
+  projectileSpeed: 18
   viewModel: {fileID: 0}
   muzzleFlash: {fileID: 0}
-  gunfire: {fileID: 0}
+  gunfire: {fileID: 8300000, guid: ff59cd9fe87a4d34183b4d1d407d2d18, type: 3}

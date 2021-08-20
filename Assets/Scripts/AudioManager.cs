@@ -6,11 +6,14 @@ public class AudioManager : MonoBehaviour
 {
     [Range(0f, 1f)]
     [SerializeField] float pauseVolume = 0.4f;
-    AudioSource source;
+    [SerializeField] AudioSource source;
+    float unpausedVolumne;
 
     private void Awake()
     {
-        source = GetComponentInChildren<AudioSource>();
+        //source = GetComponentInChildren<AudioSource>();
+
+        unpausedVolumne = source.volume;
     }
 
     // Update is called once per frame
@@ -18,7 +21,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!PauseManager.IsPaused)
         {
-            source.volume = 1f;
+            source.volume = unpausedVolumne;
         } else
         {
             source.volume = pauseVolume;

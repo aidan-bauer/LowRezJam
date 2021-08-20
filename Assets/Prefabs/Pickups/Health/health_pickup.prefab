@@ -50,7 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e723277d05c189f47b6c28c1be0ffe81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healing: 10
+  healing: 25
+  onPickup:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!33 &7184143364888416261
 MeshFilter:
   m_ObjectHideFlags: 0

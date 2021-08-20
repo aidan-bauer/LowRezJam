@@ -374,7 +374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a3fd89b2dbf3541bd4af3d031e7c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healing: 10
+  healing: 15
+  onPickup:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!111 &3265742662860972810
 Animation:
   m_ObjectHideFlags: 0

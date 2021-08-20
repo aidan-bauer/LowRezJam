@@ -20,16 +20,17 @@ public class EnemyWeapons : MonoBehaviour
 
     [HideInInspector] public EnemyMovement movement;
     EnemyHealth health;
+    AudioSource source;
 
     private void Awake()
     {
         health = GetComponent<EnemyHealth>();
+        source = GetComponent<AudioSource>(); 
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        source.clip = weapon.gunfire;
     }
 
     // Update is called once per frame
@@ -43,6 +44,8 @@ public class EnemyWeapons : MonoBehaviour
                 {
                     if (canFire)
                     {
+                        source.PlayOneShot(source.clip);
+
                         Fire();
                         canFire = false;
                     }
@@ -83,16 +86,26 @@ public class EnemyWeapons : MonoBehaviour
     public void Fire()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(transform.position + weapon.muzzlePos, transform.forward);
+        ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z);
+        //Debug.DrawRay(ray.origin, ray.direction, Color.red, 3f);
 
-        if (Physics.SphereCast(ray, 0.25f, out hit, 100f))
+        if (weapon.projectileType == Weapon.ProjectileType.Raycast)
         {
-            PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();
-
-            if (health)
+            if (Physics.SphereCast(ray, 0.25f, out hit, 100f))
             {
-                health.Hurt(weapon.damage);
+                PlayerHealth health = hit.transform.GetComponent<PlayerHealth>();
+
+                if (health)
+                {
+                    health.Hurt(weapon.damage);
+                }
             }
+        } else if (weapon.projectileType == Weapon.ProjectileType.Projectile)
+        {
+            GameObject projectileInst = Instantiate(weapon.projectile, ray.origin, transform.rotation);
+            projectileInst.GetComponent<Bullet>().damage = weapon.damage;
+            projectileInst.GetComponent<Rigidbody>().velocity = ray.direction.normalized * weapon.projectileSpeed;
         }
     }
 

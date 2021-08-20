@@ -7,9 +7,8 @@ public class EventTrigger : MonoBehaviour
 {
 
     public bool triggerOnce;
-    public UnityEvent eventsToTrigger;
-
     bool triggered;
+    public UnityEvent eventsToTrigger;
 
     private void OnTriggerEnter(Collider other)
     {

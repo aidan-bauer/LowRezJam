@@ -19,6 +19,7 @@ public class WeaponInspector : Editor
     SerializedProperty projectileType;
     SerializedProperty shotRadius;
     SerializedProperty projectile;
+    SerializedProperty muzzlePos;
     SerializedProperty projectileSpeed;
 
     SerializedProperty viewModel;
@@ -38,6 +39,7 @@ public class WeaponInspector : Editor
         projectileType = serializedObject.FindProperty("projectileType");
         shotRadius = serializedObject.FindProperty("shotRadius");
         projectile = serializedObject.FindProperty("projectile");
+        muzzlePos = serializedObject.FindProperty("muzzlePos");
         projectileSpeed = serializedObject.FindProperty("projectileSpeed");
         viewModel = serializedObject.FindProperty("viewModel");
         muzzleFlash = serializedObject.FindProperty("muzzleFlash");
@@ -60,6 +62,7 @@ public class WeaponInspector : Editor
         } else if (weapon.projectileType == Weapon.ProjectileType.Projectile)
         {
             EditorGUILayout.PropertyField(projectile, new GUIContent("Projectile"));
+            EditorGUILayout.PropertyField(muzzlePos, new GUIContent("Muzzle Position"));
             EditorGUILayout.PropertyField(projectileSpeed, new GUIContent("Projectile Speed"));
         }
         

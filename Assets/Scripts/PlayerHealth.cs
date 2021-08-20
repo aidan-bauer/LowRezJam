@@ -21,9 +21,14 @@ public class PlayerHealth : Health
         if (armor == 0)
         {
             if (currHealth - damage > 0)
+            {
                 currHealth -= damage;
+            }
             else
+            {
                 currHealth = 0;
+                OnDeath();
+            }
         }
 
         if (armor - damage > 0)

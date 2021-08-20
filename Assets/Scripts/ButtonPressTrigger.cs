@@ -7,6 +7,8 @@ public class ButtonPressTrigger : MonoBehaviour
 {
     public UnityEvent eventsToTrigger;
     bool isPlayerInTrigger = false;
+    public bool triggerOnce;
+    bool triggered;
 
     private void Update()
     {
@@ -14,7 +16,11 @@ public class ButtonPressTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                eventsToTrigger.Invoke();
+                if (!triggered)
+                    eventsToTrigger.Invoke();
+
+                if (triggerOnce)
+                    triggered = true;
             }
         }
     }

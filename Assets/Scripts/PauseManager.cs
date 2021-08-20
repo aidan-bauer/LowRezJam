@@ -22,7 +22,8 @@ public class PauseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isPaused = false;
+        isPaused = true;
+        SetTimeScale(isPaused);     //lock the cursor when level loads
     }
 
     // Update is called once per frame
@@ -40,6 +41,11 @@ public class PauseManager : MonoBehaviour
     public void SetTimeScale(bool paused)
     {
         Time.timeScale = paused ? 0f : 1f;
+
+        if (paused)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
     }
 
     //toggle UI

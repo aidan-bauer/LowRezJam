@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8398517831335237967}
   - component: {fileID: 8398517831335237965}
-  - component: {fileID: 8398517831335237960}
+  - component: {fileID: 6470464901023971539}
   - component: {fileID: 8398517831335237966}
   - component: {fileID: 8398517831335237964}
   m_Layer: 0
@@ -57,9 +57,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: pistol
-  pickupAmmo: 15
---- !u!65 &8398517831335237960
-BoxCollider:
+  pickupAmmo: 10
+  onPickup:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!135 &6470464901023971539
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -69,7 +72,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.5, z: 0.5}
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8398517831335237966
 Rigidbody:

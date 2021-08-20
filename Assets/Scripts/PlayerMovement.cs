@@ -60,14 +60,6 @@ public class PlayerMovement : MonoBehaviour
                 yDir = 0;
             }
 
-            /*if (xDir != 0 || yDir != 0)
-            {
-                anim.SetBool("walking", true);
-            } else
-            {
-                anim.SetBool("walking", false);
-            }*/
-
             rigid.velocity = Vector3.ClampMagnitude(transform.right * xDir + transform.forward * yDir, 1f) * moveSensitivity;
         }
     }

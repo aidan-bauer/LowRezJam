@@ -18,6 +18,7 @@ public class Weapon : ScriptableObject
     public ProjectileType projectileType;
     public float shotRadius = 0.25f;
     public GameObject projectile;
+    public Vector3 muzzlePos;
     public float projectileSpeed = 10f;
 
     public GameObject viewModel;

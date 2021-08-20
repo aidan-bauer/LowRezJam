@@ -15,21 +15,13 @@ public class AmmoPickup : MonoBehaviour
         {
             PlayerWeapons weapons = other.GetComponent<PlayerWeapons>();
 
-            /*if (weapons)
-            {
-                if (weapons.activeWeapon.weaponName == weaponName && weapons.activeWeapon.maxAmmo != weapons.activeWeapon.maxAmmoReserve)
-                {
-                    weapons.PickUpAmmo(pickupAmmo);
-                    Destroy(gameObject);
-                }
-            }*/
-
             if (weapons)
             {
                 foreach (WeaponSlot weapon in weapons.weapons)
                 {
                     if (weapon.weapon.weaponName == weaponName && weapon.active)
                     {
+                        weapons.PickUpAmmo(pickupAmmo);
                         onPickup.Invoke();
                         Destroy(gameObject);
                     }

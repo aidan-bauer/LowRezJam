@@ -54,6 +54,7 @@ public class PlayerWeapons : MonoBehaviour
                         if (weaponAnim.isPlaying)   //restart the animation if we start firing again before it finishes
                             weaponAnim.Rewind();
                         weaponAnim.Play();
+                        source.Play();
                         canFire = false;
                     }
                 }
@@ -67,6 +68,11 @@ public class PlayerWeapons : MonoBehaviour
                         canFire = true;
                     }
                 }
+
+                if (Input.GetButtonUp("Fire1"))
+                {
+                    source.Stop();
+                }
             } else if (activeWeapon.weapon.weaponType == Weapon.WeaponType.Semi)
             {
                 if (canFire)
@@ -77,6 +83,7 @@ public class PlayerWeapons : MonoBehaviour
                         if (weaponAnim.isPlaying)
                             weaponAnim.Rewind();
                         weaponAnim.Play();
+                        source.PlayOneShot(source.clip);
                         canFire = false;
                     }
                 }
@@ -132,6 +139,7 @@ public class PlayerWeapons : MonoBehaviour
 
             GameObject activeWeaponInst = Instantiate(activeWeapon.weapon.viewModel, weaponHolder.transform);
             weaponAnim = activeWeaponInst.GetComponent<Animation>();
+            source.clip = activeWeapon.weapon.gunfire;
         }
     }
 
@@ -156,7 +164,8 @@ public class PlayerWeapons : MonoBehaviour
                 }
             } else if (activeWeapon.weapon.projectileType == Weapon.ProjectileType.Projectile)
             {
-                GameObject projectileInst = Instantiate(activeWeapon.weapon.projectile, ray.origin, transform.rotation);
+                GameObject projectileInst = Instantiate(activeWeapon.weapon.projectile, ray.origin + activeWeapon.weapon.muzzlePos, transform.rotation);
+                projectileInst.GetComponent<Bullet>().damage = activeWeapon.weapon.damage;
                 projectileInst.GetComponent<Rigidbody>().velocity = ray.direction.normalized * activeWeapon.weapon.projectileSpeed;
             }
 
@@ -185,8 +194,15 @@ public class PlayerWeapons : MonoBehaviour
         for (int i = 0; i < weapons.Length; i ++)
         {
             if (weapons[i].weapon.weaponName == newWeapon)
+            {
                 if (!weapons[i].active)
+                {
                     weapons[i].active = true;
+                    //after picking up weapon
+                    activeWeaponIndex = i;
+                    ChangeActiveWeapon();
+                }
+            }
         }
     }
 
